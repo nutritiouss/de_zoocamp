@@ -1,0 +1,13 @@
+#venv
+
+.ipynb_checkpoints
+.mypy_cache
+__pycache__
+.idea
+
+
+#files
+scripts.sh
+
+#security
+config/config.ini
