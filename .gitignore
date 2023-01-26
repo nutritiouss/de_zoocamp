@@ -4,10 +4,15 @@
 .mypy_cache
 __pycache__
 .idea
+venv
 
+#folders
+week1/pgadmin/*
+week1/pgdata/*
 
 #files
 scripts.sh
 
 #security
 config/config.ini
+
