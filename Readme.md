@@ -25,4 +25,5 @@ ipython kernel install --name "de_zoomcamp" --user
 Use command ``jupyter-notebook&`` to run notebook. 
 
 THe desciription of week will be in directories:
+
 [1. Week_1](week_1/Readme_week_1.md)
