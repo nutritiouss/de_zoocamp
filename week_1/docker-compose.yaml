@@ -1,0 +1,53 @@
+services:
+  pgdatabase:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=ny_taxi
+    volumes:
+#      - $pwd/:/docker-entrypoint-initdb.d
+#      - ./2. Init Database:/docker-entrypoint-initdb.d
+      - pg-db-volume:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+#    entrypoint: "entrypoint.sh"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d admin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+#    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+    networks:
+      - postgres
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+#    volumes:
+#      - ./pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+#    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2G
+    networks:
+      - postgres
+networks:
+  postgres:
+    driver: bridge
+volumes:
+  pg-db-volume:
