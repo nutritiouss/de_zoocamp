@@ -13,6 +13,7 @@ conda deactivate
 sudo apt-get install python3.10 python3.10-venv
 /usr/bin/python3.10 -m venv venv
 source venv/bin/activate
+pip install --upgrade pip
 pip install -r requirements.txt
 cp config/example_config.ini config/config.ini
 ```

@@ -13,6 +13,8 @@ week1/pgdata/*
 #files
 scripts.sh
 
+
+
 #security
 config/config.ini
-
+**/key/*
