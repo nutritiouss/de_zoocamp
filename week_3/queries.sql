@@ -20,7 +20,7 @@ FROM dezoomcamp.fhv_2019;
 
 
 
-
+ _
 SELECT COUNT(DISTINCT affiliated_base_number)
 FROM dezoomcamp.fhv_2019
 WHERE DATE(pickup_datetime) BETWEEN '2019-03-01' AND '2019-03-31';

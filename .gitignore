@@ -9,6 +9,7 @@ venv
 #folders
 week1/pgadmin/*
 week1/pgdata/*
+week_5/oficial_repo/*
 
 #files
 scripts.sh
