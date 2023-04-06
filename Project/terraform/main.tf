@@ -38,13 +38,6 @@ resource "google_bigquery_dataset" "dataset" {
   delete_contents_on_destroy = true
 }
 
-resource "google_bigquery_dataset" "stage_dataset" {
-  dataset_id = var.dbt_stg_dataset
-  project    = var.project
-  location   = var.region
-  delete_contents_on_destroy = true
-}
-
 resource "google_bigquery_dataset" "prod_dataset" {
   dataset_id = var.dbt_core_dataset
   project    = var.project
@@ -52,24 +45,24 @@ resource "google_bigquery_dataset" "prod_dataset" {
   delete_contents_on_destroy = true
 }
 #
-# # VM instance
-# resource "google_compute_instance" "vm_instance" {
-#   name          = "airflow-instance"
-#   project       = var.project
-#   machine_type  = "e2-standard-4"
-#   zone          = var.region
-#
-#   boot_disk {
-#     initialize_params {
-#       image = var.vm_image
-#     }
-#   }
-#
-#   network_interface {
-#     network = "default"
-#
-#     access_config {
-#       // Ephemeral public IP
-#     }
-#   }
-# }
+# VM instance
+resource "google_compute_instance" "vm_instance" {
+  name          = "airflow-instance"
+  project       = var.project
+  machine_type  = "e2-standard-4"
+  zone          = "europe-west2-a"
+
+  boot_disk {
+    initialize_params {
+      image = var.vm_image
+    }
+  }
+
+  network_interface {
+    network = "default"
+
+    access_config {
+      // Ephemeral public IP
+    }
+  }
+}

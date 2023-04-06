@@ -1,4 +1,4 @@
-
+#system files
 .ipynb_checkpoints
 .mypy_cache
 __pycache__
@@ -35,3 +35,5 @@ config/config.ini
 
 
 #folders
+!/.idea/
+!/.idea/

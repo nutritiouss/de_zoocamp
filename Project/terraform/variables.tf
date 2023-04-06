@@ -20,11 +20,11 @@ variable "storage_class" {
   default = "STANDARD"
 }
 
-# variable "vm_image" {
-#   description = "Base image for your Virtual Machine."
-#   type = string
-#   default = "ubuntu-os-cloud/ubuntu-2204-lts"
-# }
+variable "vm_image" {
+  description = "Base image for your Virtual Machine."
+  type = string
+  default = "ubuntu-os-cloud/ubuntu-2204-lts"
+}
 
 variable "BQ_DATASET" {
   description = "BigQuery Dataset that raw data (from GCS) will be written to"
@@ -32,11 +32,6 @@ variable "BQ_DATASET" {
   default = "energy_data"
 }
 
-variable "dbt_stg_dataset" {
-  description = "BigQuery Dataset for storing dbt staging models"
-  type = string
-  default = "energy_dev"
-}
 
 variable "dbt_core_dataset" {
   description = "BigQuery Dataset for storing dbt production models"
