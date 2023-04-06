@@ -31,9 +31,4 @@ config/config.ini
 **/key/*
 
 
-#files
 
-
-#folders
-!/.idea/
-!/.idea/

@@ -62,7 +62,7 @@ resource "google_compute_instance" "vm_instance" {
 
 
  network_interface {
-    network = google_compute_network.default.name
+    network = "default"
 
     access_config {
       // Ephemeral public IP
@@ -70,64 +70,6 @@ resource "google_compute_instance" "vm_instance" {
   }
 }
 
-resource "google_compute_firewall" "default" {
-  name    = "test-firewall"
-  network = google_compute_network.default.name
-
-  allow {
-    protocol = "icmp"
-  }
-
-  allow {
-    protocol = "tcp"
-    ports    = ["80", "8080", "3000"]
-  }
-
-  source_tags = ["web"]
-}
-
-resource "google_compute_network" "default" {
-  name = "test-network"
-}
 
 
 
-
-
-
-
-
-
-
-#
-# resource "google_compute_firewall" "ssh" {
-#   name = "allow-ssh"
-#   allow {
-#     ports    = ["22"]
-#     protocol = "tcp"
-#   }
-#   direction     = "INGRESS"
-#   network       = "default"
-#   priority      = 1000
-#   source_ranges = ["0.0.0.0/0"]
-#   target_tags   = ["allow-ssh"]
-# }
-#
-# resource "google_compute_firewall" "http-server" {
-#   name    = "allow-web"
-#   network = "default"
-#
-#   allow {
-#     protocol = "tcp"
-#     ports    = ["80"]
-#   }
-#
-#   allow {
-#     protocol = "tcp"
-#     ports    = ["443"]
-#   }
-#
-#   // Allow traffic from everywhere to instances with an http-server tag
-#   source_ranges = ["0.0.0.0/0"]
-#   target_tags   = ["allow-web"]
-# }
