@@ -22,6 +22,8 @@ cp config/example_config.ini config/config.ini
 Deploy jupyter notebook and create new kernel
 ```
 ipython kernel install --name "de_zoomcamp" --user
+
+
 ```
 Use command ``jupyter-notebook&`` to run notebook. 
 
@@ -34,7 +36,5 @@ THe desciription of week will be in the corresponding directory or file:
 <br>[5. Week_5](week_5%2Fhomework.ipynb)
 <br>[6. Week_6](week_1/Readme_week_6.md)
 
-[homework.ipynb]
 
-[1. Week_1](week_1/Readme_week_1.md)
-[1. Week_1](week_1/Readme_week_1.md)
+

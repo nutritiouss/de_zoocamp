@@ -1,4 +1,3 @@
-#venv
 
 .ipynb_checkpoints
 .mypy_cache
@@ -10,12 +9,28 @@ venv
 week1/pgadmin/*
 week1/pgdata/*
 week_5/oficial_repo/*
+Project/airflow/logs/*
+Project/notebooks/kernels
+Electricity
+Gas
 
 #files
 scripts.sh
-
+google_credentials.json
+Project/**/*.csv
+Project/**/*.parquet
+kaggle.json
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
 
 
 #security
 config/config.ini
 **/key/*
+
+
+#files
+
+
+#folders
