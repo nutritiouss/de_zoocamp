@@ -223,8 +223,8 @@ services:
       TZ: "Europe/Moscow"
     ports:
       - 3000:3000
-    user: grafana:472
-    volumes:
-      - ../grafana/grafana/grafana.db:/var/lib/grafana/grafana.db
+    #user: grafana:472
+#    volumes:
+#      - ../grafana/grafana/grafana.db:/var/lib/grafana/grafana.db
 volumes:
   postgres-db-volume:
