@@ -140,6 +140,7 @@ sudo apt update -y\
 &&sudo reboot
 ```
 
+Wait a couple of minutes of rebooting instance and connect via ssh again. 
 The next thing you need to do is to copy your credential to the server. You have to add google_credentials.json and kaggle.json file
 >For this purpose, you can use the clipboard and text editor or SCP tool.
 
@@ -162,7 +163,7 @@ in the [docker-compose.yaml](airflow/docker-compose.yaml).
 Let's go to airflow folder and run [docker-compose.yaml](airflow/docker-compose.yaml) file 
 ```bash
 cd ../airflow
-docker-compose-up -d
+docker-compose up -d
 ```
 Setup is complete! The services Airflow(``port 8080``) and Grafana(``port 3000``) already avalible on you machine.
 
@@ -170,8 +171,8 @@ Now you can launch Airflow UI and run the DAGs.
 > Note: If you want to stop Airflow, please type `docker-compose down` command in your terminal.
 
 #### Running DAGs
-Open the [http://<ip_vm_instance>:8080/](http://<ip_vm_instance>:8080/) address in your browser and login using `airflow` username
-and `airflow` password.
+Open the [http://<ip_vm_instance>:8080/](http://<ip_vm_instance>:8080/) 
+address in your browser and login using `airflow` username and `airflow` password.
 
 On the DAGs View page you can find three dags:
 ![dags](images/dag_1.png)
