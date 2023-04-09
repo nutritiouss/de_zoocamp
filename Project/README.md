@@ -6,9 +6,10 @@ course held by [DataTalks.Club](https://datatalks.club/). The goal of this proje
 in this course and build an end-to-end data pipeline.
 
 ## Problem description
-Electrical energy is caused by moving electric charges called electrons. The faster the charges move, the more electrical energy they carry.
-As the charges that cause the energy are moving, electrical energy is a form of kinetic energy.
-Lightning, batteries and even electric eels are examples of electrical energy in action!
+The energy network of the Netherlands is managed by a few companies. Every year, these companies release
+on their websites a table with the energy consumption of the areas under their administration. 
+This project helps to understand the distribution of energy consumption among Dutch cities over a period of 10 years,
+as well as to analyze the yearly dynamics of connecting subscribers on the example of 2 companies.
 
 The key goals of the project are:
 * develop a data pipeline that will help to organize data processing in a batch manner (on a yearly basis);
@@ -123,9 +124,7 @@ orchestration, taking into account that you have already set up a GCP account.
 You can run Airflow locally using docker-compose. Before running it, please make sure you have at least 5 GB of free RAM.
 Alternatively, you can launch Airflow on a virtual machine in GCP (in this case, please refer to [this video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&index=16)). 
 
-#### Setup
-
-
+### Setup
 
 After successfully resource creation, you have to switch to the server via ssh and execute commands below:
 ```bash
@@ -171,7 +170,7 @@ Now you can launch Airflow UI and run the DAGs.
 > Note: If you want to stop Airflow, please type `docker-compose down` command in your terminal.
 
 #### Running DAGs
-Open the [http://localhost:8080/](http://localhost:8080/) address in your browser and login using `airflow` username
+Open the [http://<ip_vm_instance>:8080/](http://<ip_vm_instance>:8080/) address in your browser and login using `airflow` username
 and `airflow` password.
 
 On the DAGs View page you can find three dags:
@@ -197,24 +196,23 @@ This DAG plays back upload data yearly to GCS data lake. Please wait for the com
    - Aggregate data to second dashborad an put to ``energy_prod`` dataset
 
 ## Grafana
-[docker-compose.yaml](airflow/docker-compose.yaml).
-You can run Granana as well as Airflow locally using docker-compose or GCP. 
+
+You already run Granana via [docker-compose.yaml](airflow/docker-compose.yaml) file.
+I remind you that as well as Airflow, you can run locally or GCP. 
 
 Password to access grafana via web inerface is ```"energy:energy"```
 
-- Go to grafana's datasoruces [http://localhost:3000/datasources](http://localhost:3000/datasources)
+- Go to grafana's datasoruces [http://<ip_vm_instance>:3000/datasources](http://<ip_vm_instance>:3000/datasources)
 - Add you key to BigQuery datasource (google_credentials.json)
 - Select processing location  “London(europe-west2)” (Should be consistent with Terraform varibles.tf )
 - Push the button “Save and test”
-- Navigate to Dashbords>Netherlands-energy 
-(```http://localhost:3000/d/d9e6FtY4z/netherlands-energy?orgId=1```)
+- Navigate to Dashbords>Netherlands-energy  or follow this link [http://<ip_vm_instance>:3000/d/d9e6FtY4z/netherlands-energy?orgId=1](http://<ip_vm_instance>:3000/d/d9e6FtY4z/netherlands-energy?orgId=1)
 - Enjoy!
 
-The place to insert token (google_credentials.json) 
-
+- The place to insert token (google_credentials.json) 
 ![Netherlands-energy](images/token.png)
 
-
+### What is exepected that you will see:
 ![Netherlands-energy](images/dashboards.png)
 ![Netherlands-energy](images/grafana_1.png)
 ![Netherlands-energy](images/grafana_2.png)
