@@ -44,15 +44,27 @@ resource "google_bigquery_dataset" "prod_dataset" {
   location   = var.region
   delete_contents_on_destroy = true
 }
-#
+#firewall for VM instance
+resource "google_compute_firewall" "allow_http" {
+  name    = "allow-http-rule"
+  network = "default"
+  allow {
+    ports    = ["8080","3000"]
+    protocol = "tcp"
+  }
+  target_tags = ["allow-http"]
+   source_ranges = ["0.0.0.0/0"]
+  priority    = 1000
+
+}
+
 # VM instance
 resource "google_compute_instance" "vm_instance" {
   name          = "airflow-instance"
   project       = var.project
   machine_type  = "e2-standard-4"
   zone          = "europe-west2-a"
-  tags = ["http-server","https-server"]
-
+  tags = ["allow-http"]
 
   boot_disk {
     initialize_params {
@@ -60,16 +72,13 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-
  network_interface {
     network = "default"
-
     access_config {
       // Ephemeral public IP
     }
   }
+
+
 }
-
-
-
 

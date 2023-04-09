@@ -20,7 +20,10 @@ dag = DAG(
     dag_id='1_download_kaggle_dataset',
     default_args=args,
     description='download dataset from kaggle with API key',
-    schedule_interval="@yearly",
+    schedule_interval="@daily",
+    # catchup=False,
+    # max_active_runs=1,
+    tags=['energy'],
 )
 
 download_kaggle_dataset = PythonOperator(
