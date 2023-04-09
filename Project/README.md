@@ -200,9 +200,9 @@ This DAG plays back upload data yearly to GCS data lake. Please wait for the com
 [docker-compose.yaml](airflow/docker-compose.yaml).
 You can run Granana as well as Airflow locally using docker-compose or GCP. 
 
-Password to access grafana via web inerface is ```"admin:"```
+Password to access grafana via web inerface is ```"energy:energy"```
 
-- Go to grafana's datasoruces```http://localhost:3000/datasources```
+- Go to grafana's datasoruces [http://localhost:3000/datasources](http://localhost:3000/datasources)
 - Add you key to BigQuery datasource (google_credentials.json)
 - Select processing location  “London(europe-west2)” (Should be consistent with Terraform varibles.tf )
 - Push the button “Save and test”
