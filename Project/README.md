@@ -60,6 +60,7 @@ The end-to-end data pipeline includes the next steps:
 * dashboard creating.
 
 You can find the detailed information on the diagram below:
+
 ![image](images/GCP.png)
 
 ## Tutorial
@@ -108,6 +109,7 @@ In the project we use the image ``ubuntu-os-cloud/ubuntu-2204-lts``
 
 Don't forget that ID project should be the same as in file variables.tf.
 At the time of creation, for convenience, I suggest you name the projcet - ``"netherlands-energy"``
+
 ![look](images/id_project.png)
 
 
@@ -125,7 +127,7 @@ earlier at the project setup stage.
 If you would like to remove your stack from the Cloud, use the `terraform destroy` command. 
 
 ### 4. Airflow
-The next steps provide you with the instructions of running Apache Airflow, which will allow you to run the entire 
+The next steps provide you with the instructions of running Apache Airflow and Grafana, which will allow you to run the entire 
 orchestration, taking into account that you have already set up a GCP account.
 
 You can run Airflow locally using docker-compose. Before running it, please make sure you have at least 5 GB of free RAM.
@@ -133,7 +135,7 @@ Alternatively, you can launch Airflow on a virtual machine in GCP (in this case,
 
 ### Setup
 
-After successfully resource creation, you have to switch to the server via ssh and execute commands below:
+After successfully resource creation with Terraform, you have to switch to the server via ssh and execute commands below:
 ```bash
 sudo apt update -y\
 &&export DEBIAN_FRONTEND=noninteractive\
@@ -158,6 +160,7 @@ vim google_credentials.json
 vim kaggle.json
 ```
 It would be looked like this:
+
 ![cred](images/cred.png)
 
 
@@ -182,6 +185,7 @@ Open the [http://<ip_vm_instance>:8080/](http://<ip_vm_instance>:8080/)
 address in your browser and login using `airflow` username and `airflow` password.
 
 On the DAGs View page you can find three dags:
+
 ![dags](images/dag_1.png)
 ![dags](images/task_2.png)
 ![dags](images/task_3.png)
@@ -194,7 +198,7 @@ I split data pipeline on 3 parts:
 
 You should follow the steps in sequence:
  - **1_download_kaggle_dataset** - Unpause DAG(toggle).This DAG consist of 2 tasks: download dataset and unzip it.
-Please wait for the completion of
+Please wait for the completion of.
  - **2_transform_and_upload_GCS** - Unpause DAG(toggle). 
 This DAG plays back upload data yearly to GCS data lake. Please wait for the completion of.
  - **3_gcs_to_bq** - Unpause DAG(toggle). Consist of four parts:
@@ -210,14 +214,15 @@ I remind you that as well as Airflow, you can run locally or GCP.
 
 Password to access grafana via web inerface is ```"energy:energy"```
 
-- Go to grafana's datasoruces [http://<ip_vm_instance>:3000/datasources](http://<ip_vm_instance>:3000/datasources)
+- Go to grafana's datasoruces (``http://<ip_vm_instance>:3000/datasources``)
 - Add you key to BigQuery datasource (google_credentials.json)
-- Select processing location  “London(europe-west2)” (Should be consistent with Terraform varibles.tf )
+- Select processing location  “London(europe-west2)” (Should be consistent with Terraform [varibles.tf](terraform/variables.tf) )
 - Push the button “Save and test”
-- Navigate to Dashbords>Netherlands-energy  or follow this link [http://<ip_vm_instance>:3000/d/d9e6FtY4z/netherlands-energy?orgId=1](http://<ip_vm_instance>:3000/d/d9e6FtY4z/netherlands-energy?orgId=1)
+- Navigate to Dashbords>Netherlands-energy  or follow this link ``http://<ip_vm_instance>:3000/d/d9e6FtY4z/netherlands-energy?orgId=1``
 - Enjoy!
 
-- The place to insert token (google_credentials.json) 
+The place to insert token (google_credentials.json) 
+
 ![Netherlands-energy](images/token.png)
 
 ### What is exepected that you will see:
