@@ -18,6 +18,13 @@ The key goals of the project are:
 The period of the data processing will cover from 2009 to 2020.
 
 ## Dataset
+This project uses kaggle dataset [ Energy consumption of the Netherlands](https://www.kaggle.com/datasets/lucabasa/dutch-energy). 
+<br>The downloading this one providing by [kaggle api](https://www.kaggle.com/docs/api).
+<br>Before launch the project you need to sign in to your account (https://www.kaggle.com/<user_name>/account)
+and create API token. 
+
+![api_token_kaggle](images/kaggle_api_token.png)
+
 The columns in each file are:
 
 - **net_manager**: code of the regional network manager
@@ -214,7 +221,6 @@ Password to access grafana via web inerface is ```"energy:energy"```
 ![Netherlands-energy](images/token.png)
 
 ### What is exepected that you will see:
-![Netherlands-energy](images/dashboards.png)
 ![Netherlands-energy](images/grafana_1.png)
 ![Netherlands-energy](images/grafana_2.png)
 
